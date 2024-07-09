@@ -1,0 +1,19 @@
+/* .select2-container--bootstrap-5 {
+} */
+
+.select2-container--bootstrap-5 .select2-selection {
+    border: 1px solid #eee;
+    padding: 0.5rem 1rem;
+    font-size: var(--body-font-size);
+    color: #8A92A6; 
+}
+
+.select2-container--bootstrap-5 .select2-selection:focus {
+    border-color: var(--bs-primary-tint-40);
+    box-shadow: 0 0 0 0, 0 0.125rem 0.25rem 0rem rgba(58, 87, 232, 0.15);
+    outline: 0;
+}
+
+.select2-container--bootstrap-5.select2-container--focus .select2-selection, .select2-container--bootstrap-5.select2-container--open .select2-selection {
+    box-shadow: 0 0 0 0, 0 0.125rem 0.25rem 0rem rgba(58, 87, 232, 0.15);
+}
