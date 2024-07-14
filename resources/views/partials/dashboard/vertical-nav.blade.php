@@ -77,62 +77,66 @@
         </li>
     @endcan
 
-    {{-- <li class="nav-item">
-        <a class="nav-link" data-bs-toggle="collapse" href="#sidebar-type" role="button" aria-expanded="false" aria-controls="sidebar-type">
-            <i class="icon">
-                <svg width="20" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-                    <path opacity="0.4"
-                        d="M10.0833 15.958H3.50777C2.67555 15.958 2 16.6217 2 17.4393C2 18.2559 2.67555 18.9207 3.50777 18.9207H10.0833C10.9155 18.9207 11.5911 18.2559 11.5911 17.4393C11.5911 16.6217 10.9155 15.958 10.0833 15.958Z"
-                        fill="currentColor"></path>
-                    <path opacity="0.4"
-                        d="M22.0001 6.37867C22.0001 5.56214 21.3246 4.89844 20.4934 4.89844H13.9179C13.0857 4.89844 12.4102 5.56214 12.4102 6.37867C12.4102 7.1963 13.0857 7.86 13.9179 7.86H20.4934C21.3246 7.86 22.0001 7.1963 22.0001 6.37867Z"
-                        fill="currentColor"></path>
-                    <path
-                        d="M8.87774 6.37856C8.87774 8.24523 7.33886 9.75821 5.43887 9.75821C3.53999 9.75821 2 8.24523 2 6.37856C2 4.51298 3.53999 3 5.43887 3C7.33886 3 8.87774 4.51298 8.87774 6.37856Z"
-                        fill="currentColor"></path>
-                    <path
-                        d="M21.9998 17.3992C21.9998 19.2648 20.4609 20.7777 18.5609 20.7777C16.6621 20.7777 15.1221 19.2648 15.1221 17.3992C15.1221 15.5325 16.6621 14.0195 18.5609 14.0195C20.4609 14.0195 21.9998 15.5325 21.9998 17.3992Z"
-                        fill="currentColor"></path>
-                </svg>
-            </i>
-            <span class="item-name">Types</span>
-            <i class="right-icon">
-                <svg xmlns="http://www.w3.org/2000/svg" width="18" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7" />
-                </svg>
-            </i>
-        </a>
-        <ul class="sub-nav collapse" id="sidebar-type" data-bs-parent="#sidebar">
-            <li class="nav-item">
-                <a class="nav-link {{activeRoute(route('types.index'))}}" href="{{route('types.index')}}">
-                    <i class="icon">
-                        <svg xmlns="http://www.w3.org/2000/svg" width="10" viewBox="0 0 24 24" fill="currentColor">
-                            <g>
-                            <circle cx="12" cy="12" r="8" fill="currentColor"></circle>
-                            </g>
-                        </svg>
-                    </i>
-                    <i class="sidenav-mini-icon"> L </i>
-                    <span class="item-name">List</span>
-                </a>
-            </li>
-            <li class="nav-item">
-                <a class="nav-link {{activeRoute(route('types.create'))}}" href="{{route('types.create')}}">
-                    <i class="icon">
-                        <svg xmlns="http://www.w3.org/2000/svg" width="10" viewBox="0 0 24 24" fill="currentColor">
-                            <g>
-                            <circle cx="12" cy="12" r="8" fill="currentColor"></circle>
-                            </g>
-                        </svg>
-                    </i>
-                    <i class="sidenav-mini-icon"> C </i>
-                    <span class="item-name">Create</span>
-                </a>
-            </li>
-        </ul>
-    </li>
+    @can('daily-log')
+        <li class="nav-item">
+            <a class="nav-link" data-bs-toggle="collapse" href="#sidebar-type" role="button" aria-expanded="false" aria-controls="sidebar-type">
+                <i class="icon">
+                    <svg width="20" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                        <path opacity="0.4"
+                            d="M18.8088 9.021C18.3573 9.021 17.7592 9.011 17.0146 9.011C15.1987 9.011 13.7055 7.508 13.7055 5.675V2.459C13.7055 2.206 13.5036 2 13.253 2H7.96363C5.49517 2 3.5 4.026 3.5 6.509V17.284C3.5 19.889 5.59022 22 8.16958 22H16.0463C18.5058 22 20.5 19.987 20.5 17.502V9.471C20.5 9.217 20.299 9.012 20.0475 9.013C19.6247 9.016 19.1177 9.021 18.8088 9.021Z"
+                            fill="currentColor"></path>
+                        <path opacity="0.4"
+                            d="M16.0842 2.56737C15.7852 2.25637 15.2632 2.47037 15.2632 2.90137V5.53837C15.2632 6.64437 16.1742 7.55437 17.2802 7.55437C17.9772 7.56237 18.9452 7.56437 19.7672 7.56237C20.1882 7.56137 20.4022 7.05837 20.1102 6.75437C19.0552 5.65737 17.1662 3.69137 16.0842 2.56737Z"
+                            fill="currentColor"></path>
+                        <path fill-rule="evenodd" clip-rule="evenodd"
+                            d="M8.97398 11.3877H12.359C12.77 11.3877 13.104 11.0547 13.104 10.6437C13.104 10.2327 12.77 9.89868 12.359 9.89868H8.97398C8.56298 9.89868 8.22998 10.2327 8.22998 10.6437C8.22998 11.0547 8.56298 11.3877 8.97398 11.3877ZM8.97408 16.3819H14.4181C14.8291 16.3819 15.1631 16.0489 15.1631 15.6379C15.1631 15.2269 14.8291 14.8929 14.4181 14.8929H8.97408C8.56308 14.8929 8.23008 15.2269 8.23008 15.6379C8.23008 16.0489 8.56308 16.3819 8.97408 16.3819Z"
+                            fill="currentColor"></path>
+                    </svg>
+                </i>
+                <span class="item-name">Daily Logs</span>
+                <i class="right-icon">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="18" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7" />
+                    </svg>
+                </i>
+            </a>
+            <ul class="sub-nav collapse" id="sidebar-type" data-bs-parent="#sidebar">
+                @can('daily-log-list')
+                    <li class="nav-item">
+                        <a class="nav-link {{activeRoute(route('daily-logs.index'))}}" href="{{route('daily-logs.index')}}">
+                            <i class="icon">
+                                <svg xmlns="http://www.w3.org/2000/svg" width="10" viewBox="0 0 24 24" fill="currentColor">
+                                    <g>
+                                    <circle cx="12" cy="12" r="8" fill="currentColor"></circle>
+                                    </g>
+                                </svg>
+                            </i>
+                            <i class="sidenav-mini-icon"> L </i>
+                            <span class="item-name">List</span>
+                        </a>
+                    </li>
+                @endcan
 
-    <li class="nav-item">
+                @if(auth()->user()->can('daily-log-accept') && auth()->user()->can('daily-log-reject') && auth()->user()->user_type != App\Dictionaries\Users\UserTypeDictionary::USER_TYPE_SUPER_ADMIN)
+                    <li class="nav-item">
+                        <a class="nav-link {{activeRoute(route('daily-logs.index', ['menu' => 'inferiors']))}}" href="{{route('daily-logs.index', ['menu' => 'inferiors'])}}">
+                            <i class="icon">
+                                <svg xmlns="http://www.w3.org/2000/svg" width="10" viewBox="0 0 24 24" fill="currentColor">
+                                    <g>
+                                    <circle cx="12" cy="12" r="8" fill="currentColor"></circle>
+                                    </g>
+                                </svg>
+                            </i>
+                            <i class="sidenav-mini-icon"> C </i>
+                            <span class="item-name">Inferiors</span>
+                        </a>
+                    </li>
+                @endif
+            </ul>
+        </li>
+    @endcan
+
+    {{-- <li class="nav-item">
         <a class="nav-link" data-bs-toggle="collapse" href="#sidebar-supplier" role="button" aria-expanded="false" aria-controls="sidebar-supplier">
             <i class="icon">
                 <svg width="20" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">

@@ -2,6 +2,7 @@
 
 // Controllers
 
+use App\Http\Controllers\DailyLogController;
 use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\Security\RolePermission;
@@ -64,6 +65,11 @@ Route::group(['middleware' => ['auth']], function () {
     Route::resource('users', UserController::class);
     Route::post('/users/deactivate/{user:id}', [UserController::class, 'deactivate'])->name('users.deactivate');
     Route::post('/users/activate/{user:id}', [UserController::class, 'activate'])->name('users.activate');
+
+    // Daily Logs
+    Route::resource('daily-logs', DailyLogController::class);
+    Route::post('/daily-logs/reject/{daily_log:id}', [DailyLogController::class, 'reject'])->name('daily-logs.reject');
+    Route::post('/daily-logs/accept/{daily_log:id}', [DailyLogController::class, 'accept'])->name('daily-logs.accept');
 });
 
 //App Details Page => 'Dashboard'], function() {

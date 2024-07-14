@@ -43,8 +43,21 @@
                         </label>
                     </div>
                 </div>
+                @if ($type != App\Dictionaries\Users\UserTypeDictionary::USER_TYPE_DEPARTMENT_HEAD)
+                    <div class="form-group">
+                        <label class="form-label" for="input_manager_id">Manager: <span
+                                class="text-danger">*</span></label>
+                        <select name="manager_id" id="input_manager_id" class="form-control" data-type="{{ $type }}">
+                            @if ($user->manager)
+                                <option value="{{ $user->manager->id }}" selected>
+                                    {{ $user->manager->first_name }} {{ $user->manager->last_name }}
+                                </option>
+                            @endif
+                        </select>
+                    </div>
+                @endif
                 <div class="form-group d-none">
-                    <input type="hidden" class="form-control" name="user_type" value="{{ $role->name }}" readonly>
+                    <input type="hidden" class="form-control" name="user_type" value="{{ $role->name  }}" readonly>
                 </div>
             </div>
         </div>

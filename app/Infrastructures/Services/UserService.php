@@ -28,6 +28,11 @@ class UserService
         return $this->userRepository->all();
     }
 
+    public function findById($user_id, $with = [])
+    {
+        return $this->userRepository->findById($user_id, $with);
+    }
+
     public function craete($request)
     {
         // Save photo profile
@@ -38,7 +43,7 @@ class UserService
         $collection = new Collection($request);
 
         // Create user
-        $userDataArray = ['username', 'first_name', 'last_name', 'email', 'phone_number', 'photo_profile', 'user_type', 'password', 'is_active'];
+        $userDataArray = ['manager_id', 'username', 'first_name', 'last_name', 'email', 'phone_number', 'photo_profile', 'user_type', 'password', 'is_active'];
         $userData = $collection->only($userDataArray)->toArray();
         $newUser = $this->userRepository->create($userData);
 
@@ -62,7 +67,7 @@ class UserService
         $collection = new Collection($request);
 
         // Update user
-        $userDataArray = ['username', 'first_name', 'last_name', 'email', 'phone_number', 'photo_profile', 'user_type', 'password', 'is_active'];
+        $userDataArray = ['manager_id', 'username', 'first_name', 'last_name', 'email', 'phone_number', 'photo_profile', 'user_type', 'password', 'is_active'];
         $userData = $collection->only($userDataArray)->toArray();
         $updatedUser = $this->userRepository->updateById($user->id, $userData);
 

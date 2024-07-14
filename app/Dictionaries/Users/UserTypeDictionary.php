@@ -12,4 +12,19 @@ class UserTypeDictionary
     const GROUP_USER_TYPE_ADMIN = [
         self::USER_TYPE_SUPER_ADMIN
     ];
+    const GROUP_USER_TYPE_MANAGER = [
+        self::USER_TYPE_DEPARTMENT_HEAD,
+        self::USER_TYPE_DIVISION_HEAD,
+    ];
+
+    public static function getManagerRole($user_role) {
+        switch ($user_role) {
+            case self::USER_TYPE_DIVISION_HEAD:
+                return self::USER_TYPE_DEPARTMENT_HEAD;
+            case self::USER_TYPE_STAFF:
+                return self::USER_TYPE_DIVISION_HEAD;
+            default:
+                return null;
+        }
+    }
 }

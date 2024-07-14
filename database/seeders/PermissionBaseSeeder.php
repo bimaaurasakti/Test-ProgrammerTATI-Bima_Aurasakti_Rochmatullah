@@ -2,6 +2,7 @@
 
 namespace Database\Seeders;
 
+use Database\Seeders\Permissions\DailyLogPermissionSeeder;
 use Illuminate\Database\Seeder;
 use Spatie\Permission\Models\Role;
 use Spatie\Permission\Models\Permission;
@@ -26,6 +27,7 @@ class PermissionBaseSeeder extends Seeder
         // Order is very crucial here
         $this->call([
             UserPermissionSeeder::class,
+            DailyLogPermissionSeeder::class,
         ]);
     }
 
