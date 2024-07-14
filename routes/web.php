@@ -8,9 +8,10 @@ use App\Http\Controllers\HomeController;
 use App\Http\Controllers\UserController;
 use App\Http\Controllers\DailyLogController;
 use App\Http\Controllers\DashboardController;
-use App\Http\Controllers\DynamicFormController;
 use App\Http\Controllers\EmployeePerformance;
+use App\Http\Controllers\HelloWorldController;
 // Packages
+use App\Http\Controllers\DynamicFormController;
 use App\Http\Controllers\Security\RoleController;
 use App\Http\Controllers\Security\RolePermission;
 use App\Http\Controllers\Security\PermissionController;
@@ -79,6 +80,9 @@ Route::group(['middleware' => ['auth']], function () {
 
     // Employee Performance
     Route::get('/employee-performance', [EmployeePerformance::class, 'index'])->name('employee-performance.index');
+
+    // Hello World
+    Route::get('/helloworld', [HelloWorldController::class, 'helloworld'])->name('hello-world.index');
 });
 
 //App Details Page => 'Dashboard'], function() {
