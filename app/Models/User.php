@@ -23,6 +23,7 @@ class User extends Authenticatable implements MustVerifyEmail, HasMedia
      * @var array
      */
     protected $fillable = [
+        'manager_id',
         'username',
         'first_name',
         'last_name',
@@ -55,6 +56,26 @@ class User extends Authenticatable implements MustVerifyEmail, HasMedia
     ];
 
     protected $appends = ['full_name'];
+
+    public function manager()
+    {
+        return $this->belongsTo(User::class, 'manager_id');
+    }
+
+    public function inferiors()
+    {
+        return $this->hasMany(User::class, 'manager_id');
+    }
+
+    public function getAllInferiors()
+    {
+        return $this->inferiors()->with('getAllInferiors');
+    }
+
+    public function DailyLogs()
+    {
+        return $this->hasMany(DailyLog::class, 'user_id');
+    }
 
     public function getFullNameAttribute()
     {

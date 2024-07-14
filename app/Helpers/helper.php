@@ -5,7 +5,11 @@ use Illuminate\Http\Response;
 use Illuminate\Support\Facades\Storage;
 
 function unslugWithCapitalize($string){
-    return implode(' ', array_map('ucfirst', explode('_', $string)));
+    if (count(explode('_', $string)) > 1) {
+        return implode(' ', array_map('ucfirst', explode('_', $string)));
+    } else {
+        return ucfirst($string);
+    }
 }
 
 function arrayFilterNullData($array){
@@ -199,6 +203,7 @@ function getColorStatusBadge($status) {
         'pending' => 'warning',
         'paid' => 'success',
         'success' => 'success',
+        'accepted' => 'success',
         'failed' => 'danger',
         'expired' => 'dark',
         'rejected' => 'danger',

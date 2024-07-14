@@ -16,6 +16,6 @@ use App\Http\Controllers\Api\V1\Select2Controller;
 
 
 Route::prefix('select2')->group(function () {
-    Route::post('/suppliers', [Select2Controller::class, 'getSuppliers']);
-    Route::post('/types', [Select2Controller::class, 'getTypes']);
+    Route::post('/managers', [Select2Controller::class, 'getManagers']);
+    Route::post('/users', [Select2Controller::class, 'getUsers']);
 });

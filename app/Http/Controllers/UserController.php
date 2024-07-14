@@ -32,7 +32,7 @@ class UserController extends Controller
 
     public function index(Request $request, UsersDataTable $dataTable)
     {
-        $pageTitle = 'User '. unslugWithCapitalize($request->type) .' List';
+        $pageTitle = 'User '. ($request->type ? unslugWithCapitalize($request->type) : UserTypeDictionary::USER_TYPE_STAFF) .' List';
         $auth_user = Auth::user();
         $assets = ['data-table'];
         $headerAction = '';
@@ -64,13 +64,15 @@ class UserController extends Controller
         }
     }
 
-    public function show(Request $request, User $user)
+    public function show(Request $request, $user_id)
     {
+        $user = $this->userService->findById($user_id, ['manager']);
         return $this->edit($request, $user);
     }
 
-    public function edit(Request $request, User $user)
+    public function edit(Request $request, $user_id)
     {
+        $user = $this->userService->findById($user_id, ['manager']);
         $type = $user->user_type;
         $role = $this->roleService->getDataByName($type);
         return view('users.forms.user', compact('user', 'role', 'type'));

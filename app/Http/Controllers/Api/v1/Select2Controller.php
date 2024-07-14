@@ -2,16 +2,21 @@
 
 namespace App\Http\Controllers\Api\V1;
 
-use App\Models\Supplier;
+use App\Models\User;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
 use App\Http\Controllers\ApiController;
-use App\Models\Type;
+use App\Dictionaries\Users\UserTypeDictionary;
 
 class Select2Controller extends ApiController
 {
-    public function getSuppliers(Request $request)
+    public function getManagers(Request $request)
     {
-        $query = Supplier::query()->select('id', 'name as text');
+        $query = DB::table('users')->selectRaw('id, CONCAT(first_name, " ", last_name) as text');
+
+        // Query by manager type
+        $managerType = UserTypeDictionary::getManagerRole($request->user_type);
+        $query->where('user_type', $managerType);
 
         if($request->search) {
             $query->where('name', 'LIKE', "%{$request->search}%");
@@ -26,12 +31,13 @@ class Select2Controller extends ApiController
         return $this->select2SuccessResponse($count_filtered, $results);
     }
 
-    public function getTypes(Request $request)
+    public function getUsers(Request $request)
     {
-        $query = Type::query()->select('id', 'name as text');
+        $query = DB::table('users')->selectRaw('id, CONCAT(first_name, " ", last_name) as text');
 
         if($request->search) {
-            $query->where('name', 'LIKE', "%{$request->search}%");
+            $query->whereRaw("CONCAT(first_name, ' ', last_name) LIKE ?", ["%{$request->search}%"])
+                  ->orWhere('id', 'LIKE', "%{$request->search}%");
         }
 
         $count_filtered = $query->count();

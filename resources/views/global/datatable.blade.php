@@ -13,6 +13,11 @@
             <div class="card-header d-flex justify-content-between">
                <div class="header-title">
                   <h4 class="card-title">{{ $pageTitle ?? 'List'}}</h4>
+                  @isset($additionalAction)
+                    <div class="mt-3">
+                        {!! $additionalAction ?? '' !!}
+                    </div>
+                @endisset
                </div>
                 <div class="card-action">
                     {!! $headerAction ?? '' !!}
