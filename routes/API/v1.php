@@ -2,6 +2,7 @@
 
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\Api\V1\Select2Controller;
+use App\Http\Controllers\Api\V1\ProvinceController;
 
 /*
 |--------------------------------------------------------------------------
@@ -19,3 +20,5 @@ Route::prefix('select2')->group(function () {
     Route::post('/managers', [Select2Controller::class, 'getManagers']);
     Route::post('/users', [Select2Controller::class, 'getUsers']);
 });
+
+Route::resource('provinces', ProvinceController::class);
