@@ -19,6 +19,7 @@ class DatabaseSeeder extends Seeder
             UserTableSeeder::class,
             DailyLogTableSeeder::class,
             DynamicFormSeeder::class,
+            ProvinceSeeder::class,
         ]);
     }
 }
