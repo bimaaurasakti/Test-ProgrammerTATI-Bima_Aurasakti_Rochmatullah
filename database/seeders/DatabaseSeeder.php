@@ -18,6 +18,7 @@ class DatabaseSeeder extends Seeder
             PermissionBaseSeeder::class,
             UserTableSeeder::class,
             DailyLogTableSeeder::class,
+            DynamicFormSeeder::class,
         ]);
     }
 }
