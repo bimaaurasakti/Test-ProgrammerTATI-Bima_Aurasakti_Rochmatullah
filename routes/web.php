@@ -2,16 +2,17 @@
 
 // Controllers
 
+use Illuminate\Support\Facades\Route;
+use Illuminate\Support\Facades\Artisan;
+use App\Http\Controllers\HomeController;
+use App\Http\Controllers\UserController;
 use App\Http\Controllers\DailyLogController;
 use App\Http\Controllers\DashboardController;
-use App\Http\Controllers\HomeController;
-use App\Http\Controllers\Security\RolePermission;
-use App\Http\Controllers\Security\RoleController;
-use App\Http\Controllers\Security\PermissionController;
-use App\Http\Controllers\UserController;
-use Illuminate\Support\Facades\Artisan;
+use App\Http\Controllers\DynamicFormController;
 // Packages
-use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\Security\RoleController;
+use App\Http\Controllers\Security\RolePermission;
+use App\Http\Controllers\Security\PermissionController;
 
 /*
 |--------------------------------------------------------------------------
@@ -70,6 +71,10 @@ Route::group(['middleware' => ['auth']], function () {
     Route::resource('daily-logs', DailyLogController::class);
     Route::post('/daily-logs/reject/{daily_log:id}', [DailyLogController::class, 'reject'])->name('daily-logs.reject');
     Route::post('/daily-logs/accept/{daily_log:id}', [DailyLogController::class, 'accept'])->name('daily-logs.accept');
+
+    // Dynamic Table
+    Route::get('/dynamic-form', [DynamicFormController::class, 'index'])->name('dynamic-form.index');
+    Route::post('/dynamic-form', [DynamicFormController::class, 'update'])->name('dynamic-form.update');
 });
 
 //App Details Page => 'Dashboard'], function() {
