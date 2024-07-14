@@ -9,6 +9,7 @@ use App\Http\Controllers\UserController;
 use App\Http\Controllers\DailyLogController;
 use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\DynamicFormController;
+use App\Http\Controllers\EmployeePerformance;
 // Packages
 use App\Http\Controllers\Security\RoleController;
 use App\Http\Controllers\Security\RolePermission;
@@ -75,6 +76,9 @@ Route::group(['middleware' => ['auth']], function () {
     // Dynamic Table
     Route::get('/dynamic-form', [DynamicFormController::class, 'index'])->name('dynamic-form.index');
     Route::post('/dynamic-form', [DynamicFormController::class, 'update'])->name('dynamic-form.update');
+
+    // Employee Performance
+    Route::get('/employee-performance', [EmployeePerformance::class, 'index'])->name('employee-performance.index');
 });
 
 //App Details Page => 'Dashboard'], function() {
